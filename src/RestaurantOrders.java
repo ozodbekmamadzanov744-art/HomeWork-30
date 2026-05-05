@@ -94,5 +94,11 @@ public class RestaurantOrders {
                 .collect(Collectors.toList());
     }
 
+    public double getTotalRevenue() {
+        return orders.stream()
+                .mapToDouble(Order::getTotal)
+                .sum();
+    }
+
 
 }
