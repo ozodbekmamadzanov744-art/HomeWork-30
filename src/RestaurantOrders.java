@@ -88,5 +88,11 @@ public class RestaurantOrders {
                 .orElse(null);
     }
 
+    public List<Order> getOrdersByTotalRange(double minOrderTotal, double maxOrderTotal) {
+        return orders.stream()
+                .filter(o -> o.getTotal() > minOrderTotal && o.getTotal() < maxOrderTotal)
+                .collect(Collectors.toList());
+    }
+
 
 }
