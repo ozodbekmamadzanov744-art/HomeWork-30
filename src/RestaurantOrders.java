@@ -153,5 +153,14 @@ public class RestaurantOrders {
                 ));
     }
 
+    public List<String> getEmailsByItemName(String itemName) {
+        return orders.stream()
+                .filter(o -> o.getItems().stream()
+                        .anyMatch(item -> item.getName().equals(itemName)))
+                .map(o -> o.getCustomer().getEmail())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
 
 }
