@@ -80,4 +80,13 @@ public class RestaurantOrders {
                 .reduce((a, b) -> a.getTotal() >= b.getTotal() ? a : b)
                 .orElse(null);
     }
+
+    public Order getLeastProfitableHomeDelivery() {
+        return orders.stream()
+                .filter(Order::isHomeDelivery)
+                .reduce((a, b) -> a.getTotal() <= b.getTotal() ? a : b)
+                .orElse(null);
+    }
+
+
 }
