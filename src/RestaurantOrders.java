@@ -73,4 +73,11 @@ public class RestaurantOrders {
                 .filter(Order::isHomeDelivery)
                 .collect(Collectors.toList());
     }
+
+    public Order getMostProfitableHomeDelivery() {
+        return orders.stream()
+                .filter(Order::isHomeDelivery)
+                .reduce((a, b) -> a.getTotal() >= b.getTotal() ? a : b)
+                .orElse(null);
+    }
 }
