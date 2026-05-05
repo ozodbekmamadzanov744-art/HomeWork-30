@@ -5,9 +5,10 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        RestaurantOrders ro = RestaurantOrders.read("orders.json");
+        RestaurantOrders ro = RestaurantOrders.read("orders_1000.json");
 
         System.out.println("===== Задание 1 =====");
+
 
         System.out.println("\n-- Все заказы --");
         ro.printOrders();
@@ -65,6 +66,6 @@ public class Main {
         System.out.println("\n===== Задание 3 =====");
 
         System.out.println("\n-- Email клиентов, заказывавших 'Pizza' --");
-        ro.getEmailsByItemName("Pizza").forEach(System.out::println);
+        ro.getEmailsByItemName("Rustica").forEach(System.out::println);
     }
 }
