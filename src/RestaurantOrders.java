@@ -41,4 +41,11 @@ public class RestaurantOrders {
     // для решения заданий из домашки :)
     // вы можете добавлять все необходимые imports
     //
+
+
+    public void printOrders() {
+        orders.forEach(o -> System.out.println(
+                o.getCustomer().getFullName() + " | total: " + o.getTotal()
+        ));
+    }
 }
