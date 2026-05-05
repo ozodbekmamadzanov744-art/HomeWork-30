@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class RestaurantOrders {
@@ -98,6 +99,14 @@ public class RestaurantOrders {
         return orders.stream()
                 .mapToDouble(Order::getTotal)
                 .sum();
+    }
+
+    public List<String> getSortedUniqueEmails() {
+        return orders.stream()
+                .map(o -> o.getCustomer().getEmail())
+                .collect(Collectors.toCollection(TreeSet::new))
+                .stream()
+                .collect(Collectors.toList());
     }
 
 
