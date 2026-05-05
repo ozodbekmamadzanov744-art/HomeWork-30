@@ -60,9 +60,17 @@ public class RestaurantOrders {
     }
 
     public List<Order> getBottomNByTotal(int n) {
-        return orders.stream()
+        return orders
+                .stream()
                 .sorted(Comparator.comparingDouble(Order::getTotal))
                 .limit(n)
+                .collect(Collectors.toList());
+    }
+
+    public List<Order> getHomeDeliveryOrders() {
+        return orders
+                .stream()
+                .filter(Order::isHomeDelivery)
                 .collect(Collectors.toList());
     }
 }
