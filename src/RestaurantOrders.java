@@ -52,8 +52,16 @@ public class RestaurantOrders {
     }
 
     public List<Order> getTopNByTotal(int n) {
-        return orders.stream()
+        return orders
+                .stream()
                 .sorted(Comparator.comparingDouble(Order::getTotal).reversed())
+                .limit(n)
+                .collect(Collectors.toList());
+    }
+
+    public List<Order> getBottomNByTotal(int n) {
+        return orders.stream()
+                .sorted(Comparator.comparingDouble(Order::getTotal))
                 .limit(n)
                 .collect(Collectors.toList());
     }
