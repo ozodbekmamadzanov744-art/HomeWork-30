@@ -5,7 +5,9 @@ import domain.Order;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RestaurantOrders {
     // Этот блок кода менять нельзя! НАЧАЛО!
@@ -47,5 +49,12 @@ public class RestaurantOrders {
         orders.forEach(o -> System.out.println(
                 o.getCustomer().getFullName() + " | total: " + o.getTotal()
         ));
+    }
+
+    public List<Order> getTopNByTotal(int n) {
+        return orders.stream()
+                .sorted(Comparator.comparingDouble(Order::getTotal).reversed())
+                .limit(n)
+                .collect(Collectors.toList());
     }
 }
